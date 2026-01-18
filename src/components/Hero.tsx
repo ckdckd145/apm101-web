@@ -26,10 +26,10 @@ export default function Hero() {
                     <div className="flex gap-4 justify-center md:justify-start pt-4">
                         {/* Store Badges */}
                         <a href="#" className="transition-opacity hover:opacity-80" aria-label="Download on the App Store">
-                            <img src="/images/badges/app-store-badge.svg" alt="App Store" className="h-12 w-auto" />
+                            <img src={`${siteConfig.basePath}/images/badges/app-store-badge.svg`} alt="App Store" className="h-12 w-auto" />
                         </a>
                         <a href="#" className="transition-opacity hover:opacity-80" aria-label="Get it on Google Play">
-                            <img src="/images/badges/google-play-badge.svg" alt="Google Play" className="h-12 w-auto" />
+                            <img src={`${siteConfig.basePath}/images/badges/google-play-badge.svg`} alt="Google Play" className="h-12 w-auto" />
                         </a>
                     </div>
                 </div>

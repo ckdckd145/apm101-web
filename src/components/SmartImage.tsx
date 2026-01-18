@@ -11,6 +11,10 @@ interface SmartImageProps {
     priority?: boolean;
 }
 
+import { siteConfig } from '@/config/siteConfig';
+
+// ... (interface remains the same)
+
 const SmartImage: React.FC<SmartImageProps> = ({ src, alt, fallbackLabel, className, priority }) => {
     const [error, setError] = useState(false);
 
@@ -25,7 +29,8 @@ const SmartImage: React.FC<SmartImageProps> = ({ src, alt, fallbackLabel, classN
 
     // Construct path: assuming synced assets live in /assets/imported/
     // If src is already a full path (e.g. starting with /), use it as is.
-    const imagePath = src.startsWith('/') ? src : `/assets/imported/${src}`;
+    const relativePath = src.startsWith('/') ? src : `/assets/imported/${src}`;
+    const imagePath = `${siteConfig.basePath}${relativePath}`;
 
     return (
         <div className={`relative overflow-hidden bg-slate-100 ${className}`}>

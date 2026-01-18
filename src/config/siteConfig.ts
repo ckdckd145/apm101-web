@@ -1,4 +1,5 @@
 export const siteConfig = {
+  basePath: "/apm101-web", // GitHub Pages repository name
   meta: {
     title: "차근차근",
     description: "초등학생 일상활동 관리 모바일 어플리케이션",

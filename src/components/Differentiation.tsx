@@ -37,6 +37,10 @@ export default function Differentiation() {
                         );
                     })}
                 </div>
+
+                <div className="flex justify-center mt-20">
+                    <img src={`${siteConfig.basePath}/images/bi_full.png`} alt="차근차근" className="w-48 md:w-64" />
+                </div>
             </div>
         </section>
     );

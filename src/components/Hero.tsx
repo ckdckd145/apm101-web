@@ -17,10 +17,10 @@ export default function Hero() {
                             </span>
                         ))}
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-bold text-slate-900 leading-tight">
+                    <h1 className="text-4xl md:text-6xl font-bold text-slate-900 leading-tight whitespace-pre-wrap">
                         {title}
                     </h1>
-                    <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto md:mx-0">
+                    <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto md:mx-0 whitespace-pre-wrap">
                         {subtitle}
                     </p>
                     <div className="flex gap-4 justify-center md:justify-start pt-4">

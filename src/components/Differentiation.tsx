@@ -1,8 +1,10 @@
 import React from 'react';
 import { siteConfig } from '@/config/siteConfig';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, User, LineChart, Sparkles, Heart } from 'lucide-react';
 
 export default function Differentiation() {
+
+    // Actually, let's just do a full file replacement to get imports right.
     return (
         <section id="differentiation" className="py-24 bg-slate-50">
             <div className="container mx-auto px-4 md:px-6">
@@ -11,20 +13,29 @@ export default function Differentiation() {
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {siteConfig.differentiation.items.map((item, idx) => (
-                        <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow flex flex-col items-center text-center">
-                            <div className="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center text-primary-600 mb-6">
-                                <CheckCircle2 className="w-6 h-6" />
-                            </div>
-                            <h3 className="font-bold text-lg text-slate-900">
-                                {item}
-                            </h3>
-                        </div>
-                    ))}
-                </div>
+                    {siteConfig.differentiation.items.map((item, idx) => {
+                        // Dynamic icon mapping based on the string key in config
+                        const IconComponent =
+                            item.icon === 'User' ? User :
+                                item.icon === 'LineChart' ? LineChart :
+                                    item.icon === 'Sparkles' ? Sparkles :
+                                        item.icon === 'Heart' ? Heart :
+                                            CheckCircle2;
 
-                <div className="flex justify-center mt-20">
-                    <img src={`${siteConfig.basePath}/images/bi_full.png`} alt="차근차근" className="w-48 md:w-64" />
+                        return (
+                            <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow flex flex-col items-start text-left h-full">
+                                <div className="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center text-primary-600 mb-6 shrink-0">
+                                    <IconComponent className="w-6 h-6" />
+                                </div>
+                                <h3 className="font-bold text-lg text-slate-900 mb-4 break-keep whitespace-pre-wrap">
+                                    {item.title}
+                                </h3>
+                                <p className="text-slate-600 text-[15px] leading-relaxed whitespace-pre-wrap break-keep">
+                                    {item.description}
+                                </p>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </section>

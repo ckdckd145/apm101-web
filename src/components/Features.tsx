@@ -10,10 +10,10 @@ export default function Features() {
                     <div key={idx} className={`flex flex-col md:flex-row gap-12 items-center ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
                         {/* Text Content */}
                         <div className="flex-1 space-y-6 text-center md:text-left">
-                            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+                            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 whitespace-pre-wrap">
                                 {feature.title}
                             </h2>
-                            <p className="text-lg text-slate-600 leading-relaxed">
+                            <p className="text-lg text-slate-600 leading-relaxed whitespace-pre-wrap">
                                 {feature.description}
                             </p>
                         </div>

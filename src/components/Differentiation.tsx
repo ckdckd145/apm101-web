@@ -23,7 +23,7 @@ export default function Differentiation() {
                                             CheckCircle2;
 
                         return (
-                            <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow flex flex-col items-start text-left h-full">
+                            <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow flex flex-col items-center text-center h-full">
                                 <div className="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center text-primary-600 mb-6 shrink-0">
                                     <IconComponent className="w-6 h-6" />
                                 </div>

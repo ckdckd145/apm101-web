@@ -24,7 +24,7 @@ const FeatureItem = ({ feature, idx }: { feature: typeof siteConfig.features[0],
                 <h2 className="text-2xl md:text-4xl font-bold text-slate-900 whitespace-pre-wrap">
                     {feature.title}
                 </h2>
-                <p className="text-lg text-slate-600 leading-relaxed whitespace-pre-wrap">
+                <p className="text-lg text-slate-600 leading-relaxed whitespace-normal md:whitespace-pre-wrap">
                     {feature.description}
                 </p>
             </div>

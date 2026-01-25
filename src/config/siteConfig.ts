@@ -16,9 +16,9 @@ export const siteConfig = {
       description:
         "시간대(아침/점심/저녁)를 지정하고 아이의 할 일을 간편하게 추가하세요.\n오늘 할 일, 30분 안에 시작해야 하는 일, 진행 중인 일을 한 눈에 확인할 수 있어요.",
       images: [
-        "/images/examples/할일추가1.jpg",
-        "/images/examples/할일추가2.jpg",
-        "/images/examples/할일추가3.png",
+        "/images/examples/add_task_1.jpg",
+        "/images/examples/add_task_2.jpg",
+        "/images/examples/add_task_3.png",
       ],
     },
     {
@@ -26,9 +26,9 @@ export const siteConfig = {
       description:
         "AI가 복잡한 일을 더 작은 단위로 나눠주고, 순서와 소요시간을 자동으로 계산해요.\n더 이상 무엇부터 시작해야 할 지 몰라서 일을 미루지 않게 돼요. ",
       images: [
-        "/images/examples/ai나누기1.jpg",
-        "/images/examples/ai나누기2.jpg",
-        "/images/examples/ai나누기3.jpg",
+        "/images/examples/ai_split_1.jpg",
+        "/images/examples/ai_split_2.jpg",
+        "/images/examples/ai_split_3.jpg",
       ],
     },
     {
@@ -36,9 +36,9 @@ export const siteConfig = {
       description:
         "아이가 해야 할 일을 완수하면 포인트를 받고, 일정한 수행 기준에 도달하면 뱃지를 받아요. 스토어에서 아이가 원하는 보상을 만들고, 양육자는 보상의 포인트 가격을 설정해요. 아이가 보상을 얻기 위해 할 일을 수행하고 양육자는 입 아픈 잔소리를 하지 않아도 돼요. 아이가 원하는 보상을 직접 만들기 때문에 매 번 어떤 걸 해줘야 할 지 고민하지 않아도 돼요.",
       images: [
-        "/images/examples/보상1.jpg",
-        "/images/examples/보상2.PNG",
-        "/images/examples/보상3.jpg",
+        "/images/examples/reward_1.jpg",
+        "/images/examples/reward_2.png",
+        "/images/examples/reward_3.jpg",
       ],
     },
     {
@@ -46,8 +46,8 @@ export const siteConfig = {
       description:
         "아이가 해야 할 일이 시작되기 전에 알림을 받아요. 몇 시에 무엇을 해야 하는지 전부 기억하지 않아도 돼요. 아이의 머리 속에 알림-수행-보상의 연결고리가 학습되어서 수행률이 올라가요.",
       images: [
-        "/images/examples/알림1.PNG",
-        "/images/examples/알림2.jpeg",
+        "/images/examples/notification_1.png",
+        "/images/examples/notification_2.jpg",
       ],
     },
     {
@@ -55,10 +55,10 @@ export const siteConfig = {
       description:
         "양육자가 할 일을 추가하면 아이의 디바이스에 자동으로 지금 해야 할 일이 표시돼요. 아이가 완수 확인을 요청하면 양육자의 디바이스에 요청이 수신돼요. 물리적으로 떨어져 있을 때도 아이의 할 일을 관리할 수 있어요. ",
       images: [
-        "/images/examples/화면연동1.jpg",
-        "/images/examples/화면연동2.jpg",
-        "/images/examples/화면연동3.PNG",
-        "/images/examples/화면연동4.PNG",
+        "/images/examples/sync_1.jpg",
+        "/images/examples/sync_2.jpg",
+        "/images/examples/sync_3.png",
+        "/images/examples/sync_4.png",
       ],
     },
   ],

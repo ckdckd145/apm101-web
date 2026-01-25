@@ -4,6 +4,7 @@ import "./globals.css";
 import { siteConfig } from "@/config/siteConfig";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import BetaTestModal from "@/components/BetaTestModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
                         {children}
                     </main>
                     <Footer />
+                    <BetaTestModal />
                 </div>
             </body>
         </html>

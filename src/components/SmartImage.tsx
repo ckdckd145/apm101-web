@@ -7,15 +7,14 @@ interface SmartImageProps {
     src?: string; // The filename in public/assets/imported or specific path
     alt: string;
     fallbackLabel: string;
-    className?: string;
+    className?: string; // Class for the wrapper div
+    imgClassName?: string; // Class for the inner Image component
     priority?: boolean;
 }
 
 import { siteConfig } from '@/config/siteConfig';
 
-// ... (interface remains the same)
-
-const SmartImage: React.FC<SmartImageProps> = ({ src, alt, fallbackLabel, className, priority }) => {
+const SmartImage: React.FC<SmartImageProps> = ({ src, alt, fallbackLabel, className, imgClassName, priority }) => {
     const [error, setError] = useState(false);
 
     // If no src is provided, or if we encountered an error loading the image
@@ -38,7 +37,7 @@ const SmartImage: React.FC<SmartImageProps> = ({ src, alt, fallbackLabel, classN
                 src={imagePath}
                 alt={alt}
                 fill
-                className="object-cover"
+                className={imgClassName || "object-cover"}
                 onError={() => setError(true)}
                 priority={priority}
                 unoptimized // Simplify for local assets without complex loader config

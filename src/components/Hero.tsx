@@ -7,7 +7,7 @@ export default function Hero() {
 
     return (
         <section className="pt-32 pb-16 md:pt-48 md:pb-32 bg-gradient-to-b from-primary-50 to-white">
-            <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center gap-12">
+            <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center gap-6">
                 {/* Left Content */}
                 <div className="flex-1 md:flex-[1.5] space-y-8 text-center md:text-left">
                     <div className="flex flex-wrap gap-2 justify-center md:justify-start">
@@ -37,10 +37,11 @@ export default function Hero() {
                 {/* Right Content - Video/Image Placeholder */}
                 <div className="flex-1 w-full max-w-md md:max-w-full">
                     <SmartImage
-                        src="hero_video.mp4" // Expecting a file named this, or fallback
-                        alt="App Usage Demo"
-                        fallbackLabel="앱 사용 영상 (Placeholder)"
-                        className="aspect-[9/16] w-[280px] mx-auto md:w-[320px] rounded-[2.5rem] shadow-2xl border-8 border-slate-900"
+                        src="/images/bi_full.png"
+                        alt="차근차근 BI"
+                        fallbackLabel="차근차근"
+                        className="aspect-[9/16] w-[280px] mx-auto md:w-[320px] rounded-[2.5rem] shadow-2xl border-8 border-slate-900 bg-white"
+                        imgClassName="object-contain p-8"
                         priority
                     />
                 </div>

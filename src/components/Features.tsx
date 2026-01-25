@@ -6,16 +6,64 @@ import SmartImage from './SmartImage';
 
 const FeatureItem = ({ feature, idx }: { feature: typeof siteConfig.features[0], idx: number }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
+    const [touchStart, setTouchStart] = useState<number | null>(null);
+    const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
+    // Auto-slide effect
     useEffect(() => {
-        if (!feature.images || feature.images.length <= 1) return;
+        if (!feature.images || feature.images.length <= 1 || isPaused) return;
 
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % feature.images.length);
         }, 6000); // Change slide every 6 seconds
 
         return () => clearInterval(interval);
-    }, [feature.images]);
+    }, [feature.images, isPaused]);
+
+    // Swipe Threshold
+    const minSwipeDistance = 50;
+
+    const onTouchStart = (e: React.TouchEvent) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+        setIsPaused(true); // Pause on touch hold
+    };
+
+    const onTouchMove = (e: React.TouchEvent) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const onTouchEnd = () => {
+        if (!touchStart || !touchEnd) {
+            // If just a tap or no move, just resume
+            setIsPaused(false);
+            return;
+        }
+
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+
+        if (isLeftSwipe || isRightSwipe) {
+            if (isLeftSwipe) {
+                // Next image
+                setCurrentIndex((prev) => (prev + 1) % feature.images.length);
+            } else {
+                // Prev image
+                setCurrentIndex((prev) => (prev - 1 + feature.images.length) % feature.images.length);
+            }
+        }
+
+        // Resume timer (effect will restart because isPaused changes to false)
+        setIsPaused(false);
+    };
+
+    // Mouse handlers for desktop "hold" to pause
+    const onMouseDown = () => setIsPaused(true);
+    const onMouseUp = () => setIsPaused(false);
+    const onMouseEnter = () => setIsPaused(true);
+    const onMouseLeave = () => setIsPaused(false);
 
     return (
         <div className={`flex flex-col md:flex-row gap-12 items-center ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
@@ -31,7 +79,16 @@ const FeatureItem = ({ feature, idx }: { feature: typeof siteConfig.features[0],
 
             {/* Image Carousel */}
             <div className="flex-1 w-full flex justify-center">
-                <div className="relative w-full max-w-[320px] aspect-[9/16] overflow-hidden rounded-2xl shadow-lg border border-slate-100 bg-slate-50">
+                <div
+                    className="relative w-full max-w-[320px] aspect-[9/16] overflow-hidden rounded-2xl shadow-lg border border-slate-100 bg-slate-50 touch-pan-y"
+                    onTouchStart={onTouchStart}
+                    onTouchMove={onTouchMove}
+                    onTouchEnd={onTouchEnd}
+                    onMouseDown={onMouseDown}
+                    onMouseUp={onMouseUp}
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
+                >
                     <div
                         className="flex w-full h-full transition-transform duration-700 ease-in-out"
                         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -44,6 +101,7 @@ const FeatureItem = ({ feature, idx }: { feature: typeof siteConfig.features[0],
                                     fallbackLabel={`${feature.title} Image`}
                                     className="w-full h-full bg-slate-50"
                                     imgClassName="object-contain"
+                                    priority={idx === 0 && imgIdx === 0} // Prioritize first image of first feature
                                 />
                             </div>
                         ))}
@@ -51,14 +109,12 @@ const FeatureItem = ({ feature, idx }: { feature: typeof siteConfig.features[0],
 
                     {/* Optional: Navigation Dots for better UX */}
                     {feature.images && feature.images.length > 1 && (
-                        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+                        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10 pointer-events-none">
                             {feature.images.map((_, dotIdx) => (
-                                <button
+                                <div
                                     key={dotIdx}
                                     className={`w-2 h-2 rounded-full transition-colors ${dotIdx === currentIndex ? 'bg-slate-800' : 'bg-slate-300/80'
                                         }`}
-                                    onClick={() => setCurrentIndex(dotIdx)}
-                                    aria-label={`Go to slide ${dotIdx + 1}`}
                                 />
                             ))}
                         </div>

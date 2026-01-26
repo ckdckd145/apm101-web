@@ -13,6 +13,7 @@ export default function Navbar() {
                     {/* Navigation Items could go here */}
                     <a href="#features" className="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">기능</a>
                     <a href="#differentiation" className="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">차별점</a>
+                    <a href="https://pf.kakao.com/_TWcxfn" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">문의하기</a>
                 </nav>
             </div>
         </header>

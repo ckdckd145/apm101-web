@@ -1,12 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 
 export default function BetaTestModal() {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
+        // Don't show modal on privacy or terms pages
+        if (pathname?.startsWith('/privacy') || pathname?.startsWith('/terms')) {
+            return;
+        }
+
         // Show modal on mount (client-side only)
         setIsOpen(true);
     }, []);

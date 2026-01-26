@@ -70,12 +70,20 @@ export default function BetaTestModal() {
                 </div>
 
                 {/* Footer */}
-                <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 flex justify-end">
+                <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 flex justify-end gap-3">
+                    <a
+                        href="https://pf.kakao.com/_TWcxfn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-5 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-medium rounded-lg transition-colors shadow-sm active:scale-95 flex items-center justify-center"
+                    >
+                        문의하기
+                    </a>
                     <button
                         onClick={() => setIsOpen(false)}
                         className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-sm active:scale-95"
                     >
-                        확인
+                        닫기
                     </button>
                 </div>
             </div>

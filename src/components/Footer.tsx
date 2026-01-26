@@ -11,7 +11,11 @@ export default function Footer() {
                             &copy; {new Date().getFullYear()} {siteConfig.company.name}. All rights reserved.
                         </div>
                         <div className="space-y-1 text-sm text-slate-500">
-                            <h3 className="font-bold text-slate-700">{siteConfig.company.name}</h3>
+                            <h3 className="font-bold text-slate-700">
+                                <Link href="https://www.goodenoughofficial.com/" target="_blank" rel="noopener noreferrer">
+                                    {siteConfig.company.name}
+                                </Link>
+                            </h3>
                             <p>대표 {siteConfig.company.ceo}</p>
                             <p>사업자등록번호 {siteConfig.company.registrationNumber}</p>
                             <p>주소 {siteConfig.company.address}</p>

@@ -47,7 +47,7 @@ export const siteConfig = {
         "아이가 해야 할 일이 시작되기 전에 알림을 받아요.\n몇 시에 무엇을 해야 하는지 전부 기억하지 않아도 돼요.",
       images: [
         "/images/examples/notification_1.png",
-        "/images/examples/notification_2.jpg",
+        "/images/examples/notification_2.png",
       ],
     },
     {

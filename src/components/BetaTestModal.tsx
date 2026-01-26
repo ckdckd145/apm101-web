@@ -6,6 +6,7 @@ import { X } from "lucide-react";
 
 export default function BetaTestModal() {
     const [isOpen, setIsOpen] = useState(false);
+    const [doNotShowToday, setDoNotShowToday] = useState(false);
     const pathname = usePathname();
 
     useEffect(() => {
@@ -14,9 +15,28 @@ export default function BetaTestModal() {
             return;
         }
 
+        // Check if modal should be hidden
+        const hiddenUntil = localStorage.getItem('betaTestHiddenUntil');
+        if (hiddenUntil) {
+            const now = new Date().getTime();
+            if (now < parseInt(hiddenUntil)) {
+                return;
+            }
+        }
+
         // Show modal on mount (client-side only)
         setIsOpen(true);
     }, []);
+
+    const handleClose = () => {
+        if (doNotShowToday) {
+            // Set expiration to midnight tonight (tomorrow 00:00)
+            const expiry = new Date();
+            expiry.setHours(24, 0, 0, 0);
+            localStorage.setItem('betaTestHiddenUntil', expiry.getTime().toString());
+        }
+        setIsOpen(false);
+    };
 
     if (!isOpen) return null;
 
@@ -27,7 +47,7 @@ export default function BetaTestModal() {
                 <div className="bg-slate-50 px-6 py-4 border-b border-slate-100 flex justify-between items-center">
                     <h2 className="text-xl font-bold text-slate-800">베타테스트 안내사항</h2>
                     <button
-                        onClick={() => setIsOpen(false)}
+                        onClick={handleClose}
                         className="text-slate-400 hover:text-slate-600 transition-colors p-1 rounded-full hover:bg-slate-200"
                         aria-label="닫기"
                     >
@@ -59,32 +79,44 @@ export default function BetaTestModal() {
                         <ol className="list-decimal list-inside space-y-2 text-slate-600 text-sm ml-2 marker:text-slate-400 marker:font-medium">
                             <li className="pl-1">어플리케이션 "차근차근" 주 5일 이상 사용 필수</li>
                             <li className="pl-1">
-                                굿이너프 방문 전까지 아래 사용성 설문 완료 필수
-                                <div className="mt-2 p-3 bg-blue-50 rounded-lg text-blue-800 text-sm font-medium border border-blue-100 break-all">
+                                굿이너프 방문 전까지 사용성 설문 완료 필수 (별도 전달)
+                                {/* <div className="mt-2 p-3 bg-blue-50 rounded-lg text-blue-800 text-sm font-medium border border-blue-100 break-all">
                                     👉 설문링크: <span className="text-blue-600 underline cursor-pointer"></span>
                                     {/* Note: The user prompt had an empty link "(설문링크: )". I am leaving it empty but ready to be filled. */}
-                                </div>
+                                {/* </div> */}
                             </li>
                         </ol>
                     </div>
                 </div>
 
                 {/* Footer */}
-                <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 flex justify-end gap-3">
-                    <button
-                        onClick={() => setIsOpen(false)}
-                        className="px-5 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-medium rounded-lg transition-colors shadow-sm active:scale-95"
-                    >
-                        닫기
-                    </button>
-                    <a
-                        href="https://pf.kakao.com/_TWcxfn"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-sm active:scale-95 flex items-center justify-center"
-                    >
-                        문의하기
-                    </a>
+                <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <label className="flex items-center gap-2 cursor-pointer group">
+                        <input
+                            type="checkbox"
+                            className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                            checked={doNotShowToday}
+                            onChange={(e) => setDoNotShowToday(e.target.checked)}
+                        />
+                        <span className="text-sm text-slate-600 group-hover:text-slate-800 select-none">오늘 하루 보지 않기</span>
+                    </label>
+
+                    <div className="flex gap-3 w-full sm:w-auto justify-end">
+                        <button
+                            onClick={handleClose}
+                            className="px-5 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-medium rounded-lg transition-colors shadow-sm active:scale-95"
+                        >
+                            닫기
+                        </button>
+                        <a
+                            href="https://pf.kakao.com/_TWcxfn"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-sm active:scale-95 flex items-center justify-center whitespace-nowrap"
+                        >
+                            문의하기
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

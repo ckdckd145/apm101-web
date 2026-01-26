@@ -23,14 +23,19 @@ export default function Hero() {
                     <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto md:mx-0 whitespace-pre-wrap">
                         {subtitle}
                     </p>
-                    <div className="flex gap-4 justify-center md:justify-start pt-4">
-                        {/* Store Badges */}
-                        <a href="#" className="transition-opacity hover:opacity-80" aria-label="Download on the App Store">
-                            <img src={`${siteConfig.basePath}/images/badges/app-store-badge.svg`} alt="App Store" className="h-12 w-auto" />
-                        </a>
-                        <a href="#" className="transition-opacity hover:opacity-80" aria-label="Get it on Google Play">
-                            <img src={`${siteConfig.basePath}/images/badges/google-play-badge.svg`} alt="Google Play" className="h-12 w-auto" />
-                        </a>
+                    <div className="flex flex-col gap-3 pt-4 items-center md:items-start">
+                        <span className="text-slate-600 font-bold ml-1 text-lg">
+                            앱 준비 중입니다. 곧 만나요! 🚀
+                        </span>
+                        <div className="flex gap-3">
+                            {/* Store Badges */}
+                            <div className="opacity-40 grayscale cursor-not-allowed" aria-hidden="true">
+                                <img src={`${siteConfig.basePath}/images/badges/app-store-badge.svg`} alt="App Store" className="h-12 w-auto pointer-events-none" />
+                            </div>
+                            <div className="opacity-40 grayscale cursor-not-allowed" aria-hidden="true">
+                                <img src={`${siteConfig.basePath}/images/badges/google-play-badge.svg`} alt="Google Play" className="h-12 w-auto pointer-events-none" />
+                            </div>
+                        </div>
                     </div>
                 </div>
 

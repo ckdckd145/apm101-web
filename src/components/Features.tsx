@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { siteConfig } from '@/config/siteConfig';
 import SmartImage from './SmartImage';
 
+import ReactMarkdown from 'react-markdown';
+
 const FeatureItem = ({ feature, idx }: { feature: typeof siteConfig.features[0], idx: number }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
@@ -68,13 +70,20 @@ const FeatureItem = ({ feature, idx }: { feature: typeof siteConfig.features[0],
     return (
         <div className={`flex flex-col md:flex-row gap-12 items-center ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
             {/* Text Content */}
-            <div className="flex-1 space-y-6 text-left">
+            <div className={`flex-1 space-y-6 ${idx % 2 === 0 ? 'text-right' : 'text-left'}`}>
                 <h2 className="text-2xl md:text-4xl font-bold text-slate-900 whitespace-pre-wrap">
                     {feature.title}
                 </h2>
-                <p className="text-lg text-slate-600 leading-relaxed whitespace-normal md:whitespace-pre-wrap">
-                    {feature.description}
-                </p>
+                <div className="text-lg text-slate-600 leading-relaxed">
+                    <ReactMarkdown
+                        components={{
+                            p: ({ children }) => <p className="mb-4 last:mb-0">{children}</p>,
+                            strong: ({ children }) => <strong className="font-bold text-slate-900">{children}</strong>
+                        }}
+                    >
+                        {feature.description.replace(/\n/g, '  \n')}
+                    </ReactMarkdown>
+                </div>
             </div>
 
             {/* Image Carousel */}

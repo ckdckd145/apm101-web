@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
+import { sendGAEvent } from '@next/third-parties/google';
 
 export default function BetaTestModal() {
     const [isOpen, setIsOpen] = useState(false);
@@ -36,6 +37,13 @@ export default function BetaTestModal() {
             localStorage.setItem('betaTestHiddenUntil', expiry.getTime().toString());
         }
         setIsOpen(false);
+    };
+
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setDoNotShowToday(e.target.checked);
+        if (e.target.checked) {
+            sendGAEvent('event', 'beta_modal_hide_check', { value: 'checked' });
+        }
     };
 
     if (!isOpen) return null;
@@ -108,7 +116,7 @@ export default function BetaTestModal() {
                             type="checkbox"
                             className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
                             checked={doNotShowToday}
-                            onChange={(e) => setDoNotShowToday(e.target.checked)}
+                            onChange={handleCheckboxChange}
                         />
                         <span className="text-sm text-slate-600 group-hover:text-slate-800 select-none whitespace-nowrap">오늘 하루 보지 않기</span>
                     </label>
@@ -125,6 +133,7 @@ export default function BetaTestModal() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-5 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-medium rounded-lg transition-colors shadow-sm active:scale-95"
+                            onClick={() => sendGAEvent('event', 'beta_modal_inquire_click', { value: 'kakao' })}
                         >
                             문의하기
                         </a>
@@ -133,6 +142,7 @@ export default function BetaTestModal() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-sm active:scale-95 flex items-center justify-center whitespace-nowrap"
+                            onClick={() => sendGAEvent('event', 'beta_modal_apply_click', { value: 'google_form' })}
                         >
                             지원하기
                         </a>

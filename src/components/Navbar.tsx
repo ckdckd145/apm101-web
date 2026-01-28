@@ -1,5 +1,8 @@
+"use client";
+
 import Link from 'next/link';
 import { siteConfig } from '@/config/siteConfig';
+import { sendGAEvent } from '@next/third-parties/google';
 
 export default function Navbar() {
     return (
@@ -11,9 +14,29 @@ export default function Navbar() {
                 </Link>
                 <nav className="hidden md:flex gap-6">
                     {/* Navigation Items could go here */}
-                    <a href="#features" className="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">기능</a>
-                    <a href="#differentiation" className="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">차별점</a>
-                    <a href="https://pf.kakao.com/_TWcxfn" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">문의하기</a>
+                    <a
+                        href="#features"
+                        className="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors"
+                        onClick={() => sendGAEvent('event', 'navbar_features_click')}
+                    >
+                        기능
+                    </a>
+                    <a
+                        href="#differentiation"
+                        className="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors"
+                        onClick={() => sendGAEvent('event', 'navbar_difference_click')}
+                    >
+                        차별점
+                    </a>
+                    <a
+                        href="https://pf.kakao.com/_TWcxfn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors"
+                        onClick={() => sendGAEvent('event', 'navbar_inquire_click', { value: 'kakao' })}
+                    >
+                        문의하기
+                    </a>
                 </nav>
             </div>
         </header>

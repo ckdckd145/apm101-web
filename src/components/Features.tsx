@@ -70,7 +70,7 @@ const FeatureItem = ({ feature, idx }: { feature: typeof siteConfig.features[0],
     return (
         <div className={`flex flex-col md:flex-row gap-12 items-center ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
             {/* Text Content */}
-            <div className={`flex-1 space-y-6 ${idx % 2 === 0 ? 'text-right' : 'text-left'}`}>
+            <div className={`flex-1 space-y-6 text-center ${idx % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                 <h2 className="text-2xl md:text-4xl font-bold text-slate-900 whitespace-pre-wrap">
                     {feature.title}
                 </h2>

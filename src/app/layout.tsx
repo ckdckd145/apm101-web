@@ -5,6 +5,7 @@ import { siteConfig } from "@/config/siteConfig";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BetaTestModal from "@/components/BetaTestModal";
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
                     <Footer />
                     <BetaTestModal />
                 </div>
+                <GoogleAnalytics gaId="G-2R2VEY4YRC" />
             </body>
         </html>
     );

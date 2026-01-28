@@ -110,8 +110,8 @@ export default function BetaTestModal() {
                 </div>
 
                 {/* Footer */}
-                <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 flex flex-row justify-between items-center gap-4">
-                    <label className="flex items-center gap-2 cursor-pointer group">
+                <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <label className="flex items-center gap-2 cursor-pointer group w-full justify-center sm:w-auto sm:justify-start">
                         <input
                             type="checkbox"
                             className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
@@ -121,7 +121,7 @@ export default function BetaTestModal() {
                         <span className="text-sm text-slate-600 group-hover:text-slate-800 select-none whitespace-nowrap">오늘 하루 보지 않기</span>
                     </label>
 
-                    <div className="flex gap-3 w-full sm:w-auto justify-end">
+                    <div className="flex gap-3 w-full sm:w-auto justify-center sm:justify-end">
                         {/* <button
                             onClick={handleClose}
                             className="px-5 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-medium rounded-lg transition-colors shadow-sm active:scale-95"

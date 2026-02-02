@@ -24,9 +24,19 @@ export default function Hero() {
                         {subtitle}
                     </p>
                     <div className="flex flex-col gap-3 pt-4 items-center md:items-start">
-                        <span className="text-slate-600 font-bold ml-1 text-lg">
-                            앱 준비 중입니다. 곧 만나요! 🚀
-                        </span>
+                        <div className="flex flex-wrap items-center gap-3">
+                            <span className="text-slate-600 font-bold text-lg">
+                                앱 준비 중입니다. 곧 만나요! 🚀
+                            </span>
+                            <a
+                                href="https://forms.gle/1NFrkKBisxZxLGB39"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm active:scale-95 flex items-center justify-center whitespace-nowrap"
+                            >
+                                베타 테스터 지원하기
+                            </a>
+                        </div>
                         <div className="flex gap-3">
                             {/* Store Badges */}
                             <div className="opacity-40 grayscale cursor-not-allowed" aria-hidden="true">

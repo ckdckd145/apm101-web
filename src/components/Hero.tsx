@@ -1,5 +1,8 @@
+"use client";
+
 import React from 'react';
 import { siteConfig } from '@/config/siteConfig';
+import { sendGAEvent } from '@next/third-parties/google';
 import SmartImage from './SmartImage';
 
 export default function Hero() {
@@ -33,6 +36,7 @@ export default function Hero() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm active:scale-95 flex items-center justify-center whitespace-nowrap"
+                                onClick={() => sendGAEvent('event', 'hero_beta_apply_click')}
                             >
                                 베타 테스터 지원하기
                             </a>

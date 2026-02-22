@@ -31,7 +31,7 @@ export default function RootLayout({
                         {children}
                     </main>
                     <Footer />
-                    <BetaTestModal />
+                    {/* <BetaTestModal /> */}
                 </div>
                 <GoogleAnalytics gaId="G-2R2VEY4YRC" />
             </body>

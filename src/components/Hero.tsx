@@ -29,9 +29,9 @@ export default function Hero() {
                     <div className="flex flex-col gap-3 pt-4 items-center md:items-start">
                         <div className="flex flex-wrap items-center gap-3">
                             <span className="text-slate-600 font-bold text-lg">
-                                앱 준비 중입니다. 곧 만나요! 🚀
+                                3월 출시 예정입니다. 곧 만나요! 🚀
                             </span>
-                            <a
+                            {/* <a
                                 href="https://forms.gle/1NFrkKBisxZxLGB39"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -39,7 +39,7 @@ export default function Hero() {
                                 onClick={() => sendGAEvent('event', 'hero_beta_apply_click')}
                             >
                                 베타 테스터 지원하기
-                            </a>
+                            </a> */}
                         </div>
                         <div className="flex gap-3">
                             {/* Store Badges */}

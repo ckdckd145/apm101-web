@@ -29,7 +29,7 @@ export default function Hero() {
                     <div className="flex flex-col gap-3 pt-4 items-center md:items-start">
                         <div className="flex flex-wrap items-center gap-3">
                             <span className="text-slate-600 font-bold text-lg">
-                                3월 출시 예정입니다. 곧 만나요! 🚀
+                                출시 임박! 곧 만나요! 🚀
                             </span>
                             {/* <a
                                 href="https://forms.gle/1NFrkKBisxZxLGB39"

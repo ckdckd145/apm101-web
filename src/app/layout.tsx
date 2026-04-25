@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/siteConfig";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BetaTestModal from "@/components/BetaTestModal";
 import { GoogleAnalytics } from '@next/third-parties/google';
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: siteConfig.meta.title,
@@ -23,8 +20,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
-            <body className={inter.className}>
+        <html lang="kr" suppressHydrationWarning>
+            <body>
                 <div className="flex flex-col min-h-screen">
                     <Navbar />
                     <main className="flex-grow">

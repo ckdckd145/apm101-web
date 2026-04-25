@@ -1,69 +1,100 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { siteConfig } from '@/config/siteConfig';
-import { sendGAEvent } from '@next/third-parties/google';
-import SmartImage from './SmartImage';
 
 export default function Hero() {
     const { title, subtitle, badges } = siteConfig.hero;
+    const [titleFirstLine, titleSecondLine] = title.split('\n');
 
     return (
-        <section className="pt-32 pb-16 md:pt-48 md:pb-32 bg-gradient-to-b from-primary-50 to-white">
-            <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center gap-6">
-                {/* Left Content */}
-                <div className="flex-1 md:flex-[1.5] space-y-8 text-center md:text-left">
-                    <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                        {badges.map((badge, idx) => (
-                            <span key={idx} className="px-3 py-1 bg-white border border-primary-100 text-primary-600 text-xs font-semibold rounded-full shadow-sm">
-                                {badge}
-                            </span>
-                        ))}
-                    </div>
-                    <h1 className="text-4xl md:text-6xl font-bold text-slate-900 leading-tight whitespace-pre-wrap">
-                        {title}
-                    </h1>
-                    <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto md:mx-0 whitespace-pre-wrap">
-                        {subtitle}
-                    </p>
-                    <div className="flex flex-col gap-3 pt-4 items-center md:items-start">
-                        <div className="flex flex-wrap items-center gap-3">
-                            <span className="text-slate-600 font-bold text-lg">
-                                출시 임박! 곧 만나요! 🚀
-                            </span>
-                            {/* <a
-                                href="https://forms.gle/1NFrkKBisxZxLGB39"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors shadow-sm active:scale-95 flex items-center justify-center whitespace-nowrap"
-                                onClick={() => sendGAEvent('event', 'hero_beta_apply_click')}
-                            >
-                                베타 테스터 지원하기
-                            </a> */}
-                        </div>
-                        <div className="flex gap-3">
-                            {/* Store Badges */}
-                            <div className="opacity-40 grayscale cursor-not-allowed" aria-hidden="true">
-                                <img src={`${siteConfig.basePath}/images/badges/app-store-badge.svg`} alt="App Store" className="h-12 w-auto pointer-events-none" />
-                            </div>
-                            <div className="opacity-40 grayscale cursor-not-allowed" aria-hidden="true">
-                                <img src={`${siteConfig.basePath}/images/badges/google-play-badge.svg`} alt="Google Play" className="h-12 w-auto pointer-events-none" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <section className="relative overflow-hidden pt-28 pb-0 md:pt-40 md:pb-0 bg-gradient-to-b from-[#EEF7FF] via-white to-white">
+            <div className="absolute bottom-[-18%] left-1/2 h-[56%] w-[190vw] -translate-x-1/2 rounded-t-[50%] bg-[#EFF6FF]" aria-hidden="true" />
+            <div className="container relative z-10 mx-auto px-4 md:px-6 flex flex-col items-center text-center">
 
-                {/* Right Content - Video/Image Placeholder */}
-                <div className="flex-1 w-full max-w-md md:max-w-full">
-                    <SmartImage
-                        src="/images/bi_full.png"
-                        alt="차근차근 BI"
-                        fallbackLabel="차근차근"
-                        className="aspect-[9/16] w-[280px] mx-auto md:w-[320px] rounded-[2.5rem] shadow-2xl border-8 border-slate-900 bg-white"
-                        imgClassName="object-contain p-8"
+                {/* Brand */}
+                <div className="mb-12 flex items-center justify-center gap-2.5 md:mb-14 md:gap-3">
+                    <Image
+                        src={`${siteConfig.basePath}/images/bi_icon.png`}
+                        alt=""
+                        width={638}
+                        height={648}
+                        className="h-10 w-auto md:h-[54px]"
+                        priority
+                    />
+                    <Image
+                        src={`${siteConfig.basePath}/images/bi_text.png`}
+                        alt="차근차근"
+                        width={759}
+                        height={252}
+                        className="h-8 w-auto md:h-[42px]"
                         priority
                     />
                 </div>
+
+                {/* Title */}
+                <h1 className="mb-10 text-[2rem] font-extrabold leading-[1.22] tracking-normal md:text-[3.35rem]">
+                    <span className="block text-[#4C82EA]">{titleFirstLine}</span>
+                    <span className="block text-[#242424]">{titleSecondLine}</span>
+                </h1>
+
+                {/* Subtitle */}
+                <p className="text-base md:text-lg text-slate-600 max-w-4xl whitespace-pre-wrap mb-8">
+                    {subtitle}
+                </p>
+
+                {/* Store Badges */}
+                <div className="flex gap-3 mb-12 md:mb-16">
+                    <div className="opacity-40 grayscale cursor-not-allowed" aria-hidden="true">
+                        <img
+                            src={`${siteConfig.basePath}/images/badges/app-store-badge.svg`}
+                            alt="App Store"
+                            className="h-11 w-auto pointer-events-none"
+                        />
+                    </div>
+                    <div className="opacity-40 grayscale cursor-not-allowed" aria-hidden="true">
+                        <img
+                            src={`${siteConfig.basePath}/images/badges/google-play-badge.svg`}
+                            alt="Google Play"
+                            className="h-11 w-auto pointer-events-none"
+                        />
+                    </div>
+                </div>
+
+                {/* Phone mockup — centered, badges float to the right via absolute */}
+                <div className="-mb-12 flex justify-center md:-mb-16">
+                    <div className="relative">
+                        <div className="absolute left-[-12px] top-[18%] z-10 h-10 w-[5px] rounded-l-full bg-[#3D4148] md:left-[-15px] md:h-12" />
+                        <div className="absolute left-[-12px] top-[30%] z-10 h-12 w-[5px] rounded-l-full bg-[#3D4148] md:left-[-15px] md:h-16" />
+                        <div className="absolute right-[-12px] top-[33%] z-10 h-16 w-[5px] rounded-r-full bg-[#3D4148] md:right-[-15px] md:h-20" />
+
+                        {/* Phone Frame — this element defines the center */}
+                        <div className="relative aspect-[9/16] w-[220px] overflow-hidden rounded-[2rem] border-[7px] border-[#3D4148] bg-white sm:w-[260px] md:w-[300px] md:rounded-[2.6rem] md:border-[9px]">
+                            <Image
+                                src={`${siteConfig.basePath}/images/bi_full.png`}
+                                alt="차근차근"
+                                fill
+                                className="object-contain p-8 md:p-10"
+                                priority
+                            />
+                            <div className="absolute -top-[1px] left-1/2 h-[18px] w-[88px] -translate-x-1/2 rounded-b-2xl bg-[#3D4148] md:h-[22px] md:w-[112px]" />
+                        </div>
+
+                        {/* Badge pills — absolutely positioned to the right of the phone */}
+                        <div className="absolute left-full top-[30%] hidden pl-8 md:flex flex-col gap-6">
+                            {badges.map((badge, idx) => (
+                                <span
+                                    key={idx}
+                                    className="block whitespace-nowrap rounded-xl bg-[#DEECFE] px-7 py-4 text-[1.55rem] leading-none text-[#4C82EA]"
+                                >
+                                    {badge}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
     );

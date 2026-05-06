@@ -7,6 +7,7 @@ import { siteConfig } from '@/config/siteConfig';
 export default function Hero() {
     const { title, subtitle, badges } = siteConfig.hero;
     const [titleFirstLine, titleSecondLine] = title.split('\n');
+    const playStoreUrl = "https://play.google.com/store/apps/details?id=com.goodeonough.chacha";
 
     return (
         <section className="relative overflow-hidden pt-28 pb-0 md:pt-40 md:pb-0 bg-gradient-to-b from-[#EEF7FF] via-white to-white">
@@ -53,13 +54,19 @@ export default function Hero() {
                             className="h-11 w-auto pointer-events-none"
                         />
                     </div>
-                    <div className="opacity-40 grayscale cursor-not-allowed" aria-hidden="true">
+                    <a
+                        href={playStoreUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Google Play에서 차근차근 다운로드"
+                        className="transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[#4C82EA] focus:ring-offset-2"
+                    >
                         <img
                             src={`${siteConfig.basePath}/images/badges/google-play-badge.svg`}
                             alt="Google Play"
-                            className="h-11 w-auto pointer-events-none"
+                            className="h-11 w-auto"
                         />
-                    </div>
+                    </a>
                 </div>
 
                 {/* Phone mockup — centered, badges float to the right via absolute */}

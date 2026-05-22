@@ -7,6 +7,7 @@ import { siteConfig } from '@/config/siteConfig';
 export default function Hero() {
     const { title, subtitle, badges } = siteConfig.hero;
     const [titleFirstLine, titleSecondLine] = title.split('\n');
+    const appStoreUrl = "https://apps.apple.com/kr/app/%EC%B0%A8%EA%B7%BC%EC%B0%A8%EA%B7%BC-%EC%9A%B0%EB%A6%AC-%EC%95%84%EC%9D%B4-%EC%84%B1%EC%9E%A5-%EB%8F%95%EB%8A%94-%EC%8A%B5%EA%B4%80-%ED%8C%8C%ED%8A%B8%EB%84%88/id6770039379";
     const playStoreUrl = "https://play.google.com/store/apps/details?id=com.goodeonough.chacha";
 
     return (
@@ -47,13 +48,19 @@ export default function Hero() {
 
                 {/* Store Badges */}
                 <div className="flex gap-3 mb-12 md:mb-16">
-                    <div className="opacity-40 grayscale cursor-not-allowed" aria-hidden="true">
+                    <a
+                        href={appStoreUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="App Store에서 차근차근 다운로드"
+                        className="transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-[#4C82EA] focus:ring-offset-2"
+                    >
                         <img
                             src={`${siteConfig.basePath}/images/badges/app-store-badge.svg`}
                             alt="App Store"
-                            className="h-11 w-auto pointer-events-none"
+                            className="h-11 w-auto"
                         />
-                    </div>
+                    </a>
                     <a
                         href={playStoreUrl}
                         target="_blank"

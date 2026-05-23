@@ -4,8 +4,7 @@ export const siteConfig = {
     domain: "https://goodenough-startsmall.com",
     siteName: "차근차근",
     title: "차근차근 - 우리 아이 성장 돕는 습관 파트너",
-    description:
-      "차근차근은 시작과 마무리가 어려운 아이의 일상 루틴을 설계하고, 보상과 기록으로 꾸준한 습관형성과 일상관리를 돕는 양육자-아이 연동 모바일 앱입니다.",
+    description: "차근차근과 함께 아이의 일상을 관리해보세요!",
     keywords: [
       "차근차근",
       "양육",

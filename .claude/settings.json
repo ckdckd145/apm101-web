@@ -6,7 +6,9 @@
       "Bash(python3 -c ' *)",
       "Bash(find /tmp -name \"*.png\" -newer /Users/ckdck/apm101-web/src/app/robots.ts 2>/dev/null | head -5 && ls -t /Users/ckdck/Downloads/*.png 2>/dev/null | head -5 && ls -t /Users/ckdck/Desktop/*.png 2>/dev/null | head -5)",
       "Read(//private/tmp/**)",
-      "Bash(python3 -c \"from PIL import Image; img = Image.open\\('/Users/ckdck/Downloads/og_image.png'\\); print\\(img.size, img.mode\\)\")"
+      "Bash(python3 -c \"from PIL import Image; img = Image.open\\('/Users/ckdck/Downloads/og_image.png'\\); print\\(img.size, img.mode\\)\")",
+      "Bash(git -C /Users/ckdck/apm101-web status)",
+      "Bash(git -C /Users/ckdck/apm101-web log --oneline -3)"
     ]
   }
 }

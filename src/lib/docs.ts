@@ -11,14 +11,14 @@ export function getLegalDocument(type: 'privacy' | 'terms'): string {
     const files = fs.readdirSync(REFERENCE_DIR);
     let bestMatch = '';
 
-    const keywords = type === 'privacy'
+    const keywords = (type === 'privacy'
         ? ['privacy', '개인정보', 'policy']
-        : ['terms', '이용약관'];
+        : ['terms', '이용약관']).map((keyword) => keyword.normalize('NFC'));
 
     for (const file of files) {
         if (!file.endsWith('.md')) continue;
 
-        const lower = file.toLowerCase();
+        const lower = file.normalize('NFC').toLowerCase();
         if (keywords.some(k => lower.includes(k))) {
             bestMatch = file;
             break;

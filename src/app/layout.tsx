@@ -6,9 +6,55 @@ import Footer from '@/components/Footer';
 import BetaTestModal from "@/components/BetaTestModal";
 import { GoogleAnalytics } from '@next/third-parties/google';
 
+const { meta } = siteConfig;
+const ogImageUrl = `${meta.domain}${meta.ogImage}`;
+
 export const metadata: Metadata = {
-    title: siteConfig.meta.title,
-    description: siteConfig.meta.description,
+    metadataBase: new URL(meta.domain),
+    title: {
+        default: meta.title,
+        template: `%s | ${meta.siteName}`,
+    },
+    description: meta.description,
+    keywords: meta.keywords,
+    authors: [{ name: meta.author }],
+    creator: meta.creator,
+    publisher: meta.publisher,
+    openGraph: {
+        type: "website",
+        locale: "ko_KR",
+        siteName: meta.siteName,
+        title: meta.title,
+        description: meta.description,
+        url: meta.domain,
+        images: [
+            {
+                url: ogImageUrl,
+                width: 1200,
+                height: 630,
+                alt: meta.title,
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: meta.title,
+        description: meta.description,
+        images: [ogImageUrl],
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+        },
+    },
+    icons: {
+        icon: "/favicon.ico",
+    },
     formatDetection: {
         telephone: false,
     },
@@ -20,7 +66,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="kr" suppressHydrationWarning>
+        <html lang="ko" suppressHydrationWarning>
             <body>
                 <div className="flex flex-col min-h-screen">
                     <Navbar />

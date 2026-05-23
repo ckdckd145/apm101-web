@@ -1,7 +1,19 @@
+import type { Metadata } from 'next';
 import { getLegalDocument } from '@/lib/docs';
 import MarkdownViewer from '@/components/MarkdownViewer';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+
+export const metadata: Metadata = {
+    title: '서비스 이용약관',
+    alternates: {
+        canonical: '/terms',
+    },
+    robots: {
+        index: false,
+        follow: true,
+    },
+};
 
 export default function TermsPage() {
     const content = getLegalDocument('terms');

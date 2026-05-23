@@ -1,7 +1,19 @@
+import type { Metadata } from 'next';
 import { getLegalDocument } from '@/lib/docs';
 import MarkdownViewer from '@/components/MarkdownViewer';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
+
+export const metadata: Metadata = {
+    title: '개인정보 처리방침',
+    alternates: {
+        canonical: '/privacy',
+    },
+    robots: {
+        index: false,
+        follow: true,
+    },
+};
 
 export default function PrivacyPage() {
     const content = getLegalDocument('privacy');

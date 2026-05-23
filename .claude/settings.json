@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(identify /Users/ckdck/apm101-web/public/images/bi_full.png)",
+      "Bash(python3 -c \"from PIL import Image; img = Image.open\\('/Users/ckdck/apm101-web/public/images/bi_full.png'\\); print\\(img.size\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(find /tmp -name \"*.png\" -newer /Users/ckdck/apm101-web/src/app/robots.ts 2>/dev/null | head -5 && ls -t /Users/ckdck/Downloads/*.png 2>/dev/null | head -5 && ls -t /Users/ckdck/Desktop/*.png 2>/dev/null | head -5)",
+      "Read(//private/tmp/**)",
+      "Bash(python3 -c \"from PIL import Image; img = Image.open\\('/Users/ckdck/Downloads/og_image.png'\\); print\\(img.size, img.mode\\)\")"
+    ]
+  }
+}
